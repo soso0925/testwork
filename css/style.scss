@@ -1,0 +1,463 @@
+@charset "utf-8";
+
+
+$background-color:#121212;
+$card-bgcolor:#313132;
+$font-color:#ffffff;
+$accent-color:#C45454;
+$menu-color:#999999;
+
+
+$sm:481px;
+$md:990px;
+
+$sm-card:348px;
+$md-card:308px;
+
+@mixin tab{
+    @media (min-width:($sm)){
+        @content;
+    }
+}
+@mixin PC{
+    @media (min-width:($md)){
+        @content;
+    }
+}
+
+@mixin basic-inner{
+    width: 90.4%;
+    max-width: 480px;
+
+    margin:0 auto;
+
+    @include tab{
+        width: 93.75%;
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    @include PC{
+        width: 89.45%;
+        max-width: 1145px;
+        margin: 0 auto;
+    }
+
+}
+
+@mixin basic-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+
+@mixin basic-button{
+    background-color: $card-bgcolor;
+    width: 339px;
+    height: 104px;
+    position: relative;
+    border-radius:10px ;
+    box-shadow:3px 3px 6px rgba(75, 68, 68,.16);
+
+    margin-bottom: 18px;
+
+    @include tab{
+        width:47.73%;
+        max-width: 348px;
+
+        margin-bottom: 24px;
+    }
+
+    @include PC{
+        width: 30.15%;
+        max-width: 348px;
+
+        margin-bottom: 46px;
+    }
+}
+
+@mixin basic-hero{
+    width: 100%;
+    background-color: $font-color;
+    padding-top: 23.47%;
+    padding-bottom: 23.47%;
+    position: relative;
+
+    color: $card-bgcolor;
+    @include tab{
+        padding-top: 43.95%;
+        padding-bottom: 43.95em;
+    }
+
+    @include PC{
+        padding-top: 7.86%;
+        padding-bottom: 7.86%;
+    }
+}
+
+/* element */
+body{
+    background-color: $background-color;
+    color: $font-color;
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.25;
+
+}
+
+h1{
+    color: $font-color;
+    width: 108px;
+    margin: 18px 0;
+
+    @include tab{
+        width: 84px;
+        height: 36px;
+        margin: 0 0 10px;
+    }
+
+    @include PC{
+        width: 84px;
+        height: 36px;
+        margin: 0 0 10px;
+    }
+}
+
+h2{
+    font-size: 20px;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    color: $font-color;
+    text-decoration: none;
+}
+
+i{
+    font-size: 36px;
+}
+
+.header{
+    vertical-align: middle;
+    &__inner{
+        @include basic-inner;
+        @include basic-flex;
+        justify-content: space-between;
+    }
+}
+
+.gnav{
+    &__list{
+        display: none;
+        @include tab{
+            display: none;
+        }
+
+        @include PC{
+            display:flex;
+            justify-content: space-between;
+
+            padding: 14px 0 15px;
+            text-align: left;
+            vertical-align: middle;
+        }
+    }
+
+    &__link{
+        padding-left: 72px;
+    }
+}
+
+.smpmenu{
+    display:block;
+
+    @include tab{
+        display: block;
+    }
+
+    @include PC{
+        display:none;
+    }
+
+    &__btn{
+        margin: 18px 0;
+
+        :hover{
+            cursor: pointer;
+        }
+    }
+
+    &__list{
+        display: none;
+        background-color: $menu-color;
+
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+
+    }
+
+    &__inner{
+        @include basic-inner;
+    }
+
+    &__open{
+        display: block;
+    }
+
+    &__link{
+        border-bottom: 1px solid $font-color;
+        padding: 18px 0;
+        color: $background-color;
+        font-size: 18px;
+        text-align: center;
+
+        >a{
+            color: $background-color;
+        }
+    }
+
+    &__title{
+        font-size: 20px;
+    }
+}
+
+
+
+.button{
+    @include basic-button;
+
+    &__path{
+        @include basic-flex;
+
+    }
+
+    &__icon{
+        width: 80px;
+        margin: 12px;
+        border:$font-color 0 solid;
+        border-radius: 40px;
+
+    }
+
+    &__carender{
+        width: 80px;
+        margin: 12px;
+        border:$font-color 1px solid;
+        border-radius:10px;
+        padding: 25px 10px;
+        text-align: center;
+
+    }
+
+    &__info{
+        position: absolute;
+        top: 50%;
+        left: 152px;
+        transform:translate(-50%,-50%);
+
+    }
+
+    &__title{
+        font-size: 20px;
+        font-weight: normal;
+    }
+}
+
+.carender{
+    font-size: 20px;
+}
+
+/*layout*/
+
+.l__inner{
+    @include basic-inner;
+}
+
+.l-flex{
+    @include basic-flex;
+}
+
+.l__header{
+    background-color: $card-bgcolor;
+}
+
+.l__footer{
+    background-color: $card-bgcolor;
+}
+
+/* index.html */
+
+/* schoolyear.html */
+
+.hero{
+    @include basic-hero;
+    &__inner{
+        @include basic-inner;
+    }
+}
+
+.schoolyear{
+    &__list{
+        @include basic-flex;
+        justify-content: space-between;
+
+        padding-top: 18px;
+
+        @include tab{
+            padding-top: 24px;
+        }
+
+        @include PC{
+            padding-top: 60px;
+        }
+    }
+    &__button{
+        @include basic-button;
+    }
+}
+
+/* subject.html */
+
+.subject{
+
+    &__list{
+        @include basic-flex;
+        justify-content: space-between;
+
+        padding-top: 18px;
+
+        @include tab{
+            padding-top: 24px;
+        }
+
+        @include PC{
+            padding-top: 60px;
+        }
+    }
+
+    &__button{
+
+        @include tab{
+            @include basic-flex;
+        }
+
+        @include PC{
+            @include basic-flex;
+        }
+    }
+
+}
+
+
+/* single.html */
+
+.question{
+    &__head{
+        @include basic-hero;
+
+        background-color: $accent-color;
+    }
+
+
+
+    &__inner{
+        @include basic-inner;
+    }
+
+    &__data{
+        padding-bottom: 6px;
+        color: $font-color;
+    }
+
+    &__title{
+        padding-top: 6px;
+        color: $font-color;
+    }
+
+    &__contents{
+        @include basic-inner;
+    }
+
+    &__form{
+        @include basic-inner;
+    }
+}
+
+.contents{
+        &__title{
+            padding: 24px 0 12px;
+
+            @include tab{
+                padding: 36px 0 12px;
+            }
+
+            @include PC{
+                padding: 48px 0 12px;
+            } 
+        }
+
+        &__read{
+            font-size: 16px;
+        }
+}
+
+.form{
+
+    @include basic-inner;
+
+    padding: 72px 0;
+
+    &__path{
+        padding: 16px 26px;
+        background-color: #ffffff;
+        border-radius: 26px;
+        box-shadow: 10 10 10 rgba(123, 123, 123,.50);
+        font-size: 16px;
+    }
+
+}
+
+
+.submit{
+    @include basic-inner;
+
+    padding-bottom: 72px;
+
+    @include tab{
+        padding-bottom: 36px;
+    }
+
+    @include PC{
+        padding-bottom: 48px;
+    }
+
+    &__path{
+        width: 339px;
+        display: block;
+        border-radius: 26px;
+        background-color: $accent-color;
+        padding: 16px;
+        text-align: center;
+    }
+}
+
+.footer{
+    
+    &__inner{
+        @include basic-inner;
+        padding: 14.5px 0;
+    }
+
+    &__small{
+        font-size: 16px;
+    }
+}

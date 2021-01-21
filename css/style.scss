@@ -362,7 +362,7 @@ i{
 
 /* single.html */
 
-.question{
+.contents{
     &__head{
         @include basic-hero;
 
@@ -385,16 +385,16 @@ i{
         color: $font-color;
     }
 
-    &__contents{
-        @include basic-inner;
-    }
-
     &__form{
         @include basic-inner;
     }
 }
 
-.contents{
+.question{
+    &__inner{
+            @include basic-inner;
+    }
+
         &__title{
             padding: 24px 0 12px;
 
@@ -419,6 +419,7 @@ i{
     padding: 72px 0;
 
     &__path{
+        width: 339px;
         padding: 16px 26px;
         background-color: #ffffff;
         border-radius: 26px;

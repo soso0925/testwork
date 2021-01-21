@@ -45,31 +45,31 @@
     </header>
 
     <main class="l__main">
-        <article class="question">
-            <div class="question__head">
-                <div class="question__inner">
-                    <p class="question__data">12/20</p>
-                    <h2 class="question__title">
+        <article class="contents">
+            <div class="contents__head">
+                <div class="contents__inner">
+                    <p class="contents__data">12/20</p>
+                    <h2 class="contents__title">
                         簡単なテスト
                     </h2>
                 </div>
             </div>
-            <div class="question__contents contents">
-                <h3 class="contents__title">
-                    第１問
+            <div class="contents__zone question">
+
+                <h3 class="question__title">
+                    第 {{ (questionIndex+1) }} 問
                 </h3>
-                <p class="contents__read">
-                    サンプル問題です。この問題文は三行ほど入ります。
-                    この問題文はどのような内容が入るでしょうか。
+                <p class="question__read">
+                    {{ currentQuestion.question }}
                 </p>
             </div>
             <div class="question__form form">
-                <input type="text" class="form__path">
+                <input type="text" class="form__path" v-model="form">
             </div>
 
             <div class="question__submit submit">
-                <button class="submit__path">
-                    <a href="single.html" class="submit__link">次の問題へ</a>
+                <button type="button" class="submit__path" @click="addAnswer()">
+                    次の問題へ
                 </button>
             </div>
         </article>
@@ -80,7 +80,10 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
     <script src="script.js"></script>
+    <script src="question.js"></script>
+
 </body>
 
 </html>

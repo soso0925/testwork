@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="row">
+        <div class="offset-3 col-6">
+            <div class="card">
+                <div class="card-body">
+                    <p class="badge badge-dark">第 {{ (questionIndex+1) }} 問</p>
+                    <br>
+                    <h4 class="card-title">{{ currentQuestion.question }}</h4>
+                    <hr>
+                    <!-- <button type="button" class="btn btn-primary btn-lg btn-block text-left"
+                        v-for="(answer,index) in currentQuestion.answers" @click="addAnswer(index)">{{ (index+1) }}. {{
+                        answer }}</button> -->
+
+                    <input type="text" v-model="form">
+
+                    <button type="button" class="btn btn-primary btn-lg btn-block text-left"
+                        @click="addAnswer()">回答する</button>
+
+                    <p>{{count}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                form: "",
+                answers: [],
+                count: 0,
+
+                questionIndex: 0,
+
+                questions: [
+                    {
+                        question: '囲碁の石の大きさはどっちが大きい？',
+                        answer: '回答'
+                    },
+                    {
+                        question: 'コンビニチェーンのセブンイレブン。アルファベット表記で１文字だけ小文字なのは？',
+                        answer: 'A'
+                    },
+                    {
+                        question: 'カラオケは「空○○」略です。空欄に入る言葉は何？',
+                        answer: 'カタカナ'
+                    }
+                ]
+            },
+
+            computed: {
+                currentQuestion: function () {
+
+                    return this.questions[this.questionIndex];
+
+                }
+            },
+
+            methods: {
+                addAnswer: function () {
+
+                    this.answers.push(this.form);
+
+                    if (this.questions.length == this.answers.length) {
+
+                        var correctCount = 0;
+
+                        for (var i in this.answers) {
+
+                            var answer = this.answers[i];
+
+                            if (answer == this.questions[i].answer) {
+
+                                correctCount++;
+
+                            }
+
+                        }
+                        this.count = correctCount + '問正解です！';
+
+                    } else {
+
+                        this.questionIndex++;
+
+                    }
+
+
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
